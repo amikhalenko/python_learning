@@ -1,0 +1,7 @@
+create database music_shop;
+create user music with password 'music';
+alter database music_shop owner to music;
+create table if not exists Genre (ID serial primary key, Name_genre varchar(20) not null unique);
+create table if not exists Artist (ID serial primary key, Name_artist varchar(40) not null unique, Genre_id integer references Genre(ID));
+create table if not exists Album (ID serial primary key, Album_name varchar(50) not null, Album_year integer not null, Genre_id integer references Artist(ID));
+create table if not exists Track (ID serial primary key, Track_name varchar(100) not null, Duration time not null, Album_id integer references Album(ID));
