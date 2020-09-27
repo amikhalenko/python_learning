@@ -1,0 +1,11 @@
+create database music_shop;
+create user music with password 'music';
+alter database music_shop owner to music;
+create table if not exists Genre (ID serial primary key, Name_genre varchar(20) not null unique);
+create table if not exists Artist (ID serial primary key, Name_artist varchar(40) not null unique);
+create table if not exists Album (ID serial primary key, Album_name varchar(50) not null, Album_year integer not null);
+create table if not exists Genre_Artist (Genre_ID integer references Genre(ID), Artist_ID integer references Artist(ID), constraint pk_genre_artist primary key (Genre_ID, Artist_ID));
+create table if not exists Artist_Album (Artist_ID integer references Artist(ID), Album_ID integer references Album(ID), constraint pk_artist_album primary key (Artist_ID, Album_ID));
+create table if not exists Collection (ID serial primary key, Collection_name varchar(50) not null, Collection_year integer not null);
+create table if not exists Track (ID serial primary key, Track_name varchar(100) not null, Duration time not null, Album_id integer references Album(ID));
+create table if not exists Collection_Track (Collection_ID integer references Collection(ID), Track_ID integer references Track(ID), constraint pk_collection_track primary key (Collection_ID, Track_ID));
