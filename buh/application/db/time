@@ -1,0 +1,5 @@
+from datetime import datetime
+def time():
+    now = datetime.now()
+    print(f'{str(now)}')
+time()
