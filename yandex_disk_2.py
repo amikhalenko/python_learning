@@ -40,7 +40,7 @@ class YaUploader:
             print("Sucsess")
 
 if __name__ == '__main__':
-    uploader = YaUploader('AQAAAAAWuB_0AAcDCLeAfb92pUlpndy20rowbIE')
+    uploader = YaUploader('TOKEN')
     # pprint(uploader.get_files_list())
     result = uploader.upload('my.txt','c:\my_folder\my.txt')
 
